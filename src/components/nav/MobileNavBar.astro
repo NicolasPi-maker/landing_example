@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/logo/logo.png';
+import BtnLink from "../shared/BtnLink.astro";
+---
+
+<nav class="flex flex-col relative flex-auto md:hidden">
+    <div class="p-4 glass flex z-50">
+        <div class="flex gap-2 items-center flex-1">
+            <Image src={logo} alt="Astro logo" />
+            <h2 class="font-bold text-xl">Vaultflow</h2>
+        </div>
+        <button id="burger-btn" class="relative md:hidden">
+            <svg id="closed-svg" class="absolute top-1/2 right-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
+                <rect width="24" height="24" fill="none" />
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M4 7h3m13 0h-9m9 10h-3M4 17h9m-9-5h16" />
+            </svg>
+            <svg id="opened-svg" class="absolute top-1/2 right-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
+                <rect width="24" height="24" fill="none" />
+                <path fill="currentColor" d="M7.227 7.227a.75.75 0 0 1 1.06 0L12 10.939l3.712-3.712a.75.75 0 0 1 1.061 1.06L13.061 12l3.712 3.712a.75.75 0 0 1-1.06 1.061L12 13.061l-3.712 3.712a.75.75 0 1 1-1.061-1.06L10.939 12L7.227 8.288a.75.75 0 0 1 0-1.061" />
+            </svg>
+        </button>
+    </div>
+    <ul id="nav-mobile" class="nav-mobile-wrapper md:hidden flex-auto flex flex-col absolute top-0 gap-6 p-4 w-full py-8 glass z-30 text-secondary">
+        <li>
+            <a href="#" class="p-2">Features</a>
+        </li>
+        <li>
+            <a href="#" class="p-2">Pricing</a>
+        </li>
+        <li>
+            <a href="#" class="p-2">About us</a>
+        </li>
+        <li>
+            <BtnLink url="#" label="Download the app" />
+        </li>
+    </ul>
+</nav>
+
+<style>
+  .nav-mobile-wrapper {
+    height: calc(100vh - 3.5rem);
+    transform: translateY(3rem);
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+  }
+
+  .open {
+    transform: translateY(3.5rem);
+    opacity: 1;
+  }
+
+  #opened-svg {
+    opacity: 0;
+  }
+
+  #burger-btn, svg {
+    transition: transform .3s, opacity .3s;
+  }
+</style>
+
+<script>
+  window.onload = () => {
+    const burgerBtn = document.querySelector('#burger-btn');
+    const navMobile = document.querySelector('#nav-mobile');
+    const openedSvg = document.querySelector('#opened-svg');
+    const closedSvg = document.querySelector('#closed-svg');
+
+    burgerBtn.addEventListener('click', () => {
+      navMobile.classList.toggle('open');
+      toggleSvg();
+    });
+
+    const toggleSvg = () => {
+      if(navMobile.classList.contains('open')) {
+        openedSvg.style.opacity = '1';
+        closedSvg.style.opacity = '0';
+      } else {
+        openedSvg.style.opacity = '0';
+        closedSvg.style.opacity = '1';
+      }
+    }
+  }
+</script>
