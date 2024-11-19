@@ -1,15 +1,16 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../../assets/logo/logo.png';
 import BtnLink from "../shared/BtnLink.astro";
+
+const { logo, companyName } = Astro.props;
+const baseApiUrl = import.meta.env.STRAPI_URL;
 ---
 
 <nav class="flex-auto hidden md:flex">
-    <div class="flex justify-between w-full glass m-8 p-4 px-8 rounded-3xl">
+    <div class="flex justify-between w-full glass m-8 p-4 px-8 rounded-3xl items-center">
         <div class="flex">
             <div class="flex gap-2 items-center flex-1">
-                <Image src={logo} alt="Astro logo" />
-                <h2 class="font-bold text-xl">Vaultflow</h2>
+                <img src=`${baseApiUrl}/${logo}` alt="Astro logo" />
+                <h2 class="font-bold text-xl">{companyName}</h2>
             </div>
         </div>
         <ul class="flex gap-8 items-center text-secondary">

@@ -1,14 +1,14 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../../assets/logo/logo.png';
 import BtnLink from "../shared/BtnLink.astro";
----
 
+const { logo, companyName } = Astro.props;
+const baseApiUrl = import.meta.env.STRAPI_URL;
+---
 <nav class="flex flex-col relative flex-auto md:hidden">
     <div class="p-4 glass flex z-50">
         <div class="flex gap-2 items-center flex-1">
-            <Image src={logo} alt="Astro logo" />
-            <h2 class="font-bold text-xl">Vaultflow</h2>
+            <img src=`${baseApiUrl}/${logo}` alt="Astro logo" />
+            <h2 class="font-bold text-xl">{companyName}</h2>
         </div>
         <button id="burger-btn" class="relative md:hidden">
             <svg id="closed-svg" class="absolute top-1/2 right-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
