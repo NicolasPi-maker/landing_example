@@ -1,0 +1,25 @@
+---
+import {Image} from "astro:assets";
+import CardWrapper from "./CardWrapper.astro";
+const { logo, title, description, link, img = null, auraColor='#591DDD'} = Astro.props;
+const localAuraColor = auraColor;
+---
+
+<CardWrapper>
+    <div class="flex flex-col gap-4 shadow flex-1">
+        <Image src={logo} alt="logo" class="icon-aura" />
+        <h2 class="text-3xl">{title}</h2>
+        <p class="text-sm opacity-65 line-clamp-3 md:line-clamp-none">{description}</p>
+        <a href={link.url} class="mt-4 text-sm underline">{ link.title }</a>
+    </div>
+    <div class="hidden md:flex">
+        {img ? <Image src={img} alt="img" class="card-shadow rounded-3xl" /> : null}
+    </div>
+</CardWrapper>
+
+
+<style define:vars={{localAuraColor}}>
+    .icon-aura {
+        filter: drop-shadow(0 0 1.25rem var(--localAuraColor));
+    }
+</style>

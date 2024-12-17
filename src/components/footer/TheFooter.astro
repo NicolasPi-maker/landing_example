@@ -1,0 +1,44 @@
+---
+import {Image} from "astro:assets";
+import logo from '../../assets/logo/logo.png';
+import data from './static/data.json';
+---
+
+<div>
+    <nav class="flex flex-col gap-4">
+        <ul class="grid  grid-cols-1 md:grid-cols-2 w-2/3 gap-8">
+            {data.data.map((item) => (
+              <li class="flex flex-col gap-4">
+                  <h3 class="text-2xl">
+                      {item.title}
+                  </h3>
+                  <ul>
+                      {item.data.map((subItem) => (
+                        <li class="opacity-65">
+                            {subItem.label && subItem.concat ? `${subItem.label}: ` : ''}
+                            {subItem.type === 'email' ? (
+                              <a href={`mailto:${subItem.value}`}>
+                                  {subItem.concat ? subItem.value : subItem.label}
+                              </a>
+                            ) : subItem.type === 'url' ? (
+                              <a href={subItem.value}>
+                                  {subItem.concat ? subItem.value : subItem.label}
+                              </a>
+                            ) : (
+                              subItem.value
+                            )}
+                        </li>
+                      ))}
+                  </ul>
+              </li>
+            ))}
+        </ul>
+        <div class="flex-col-reverse gap-4 mt-12 flex md:flex-row items-center">
+            <p class="text-sm opacity-65 flex-1">© 2023 Vaultflow. All Rights Reserved.</p>
+            <div class="flex gap-2 items-center">
+                <Image src={logo}  alt="Astro logo" />
+                <h2 class="font-bold text-xl">Vaultflow</h2>
+            </div>
+        </div>
+    </nav>
+</div>

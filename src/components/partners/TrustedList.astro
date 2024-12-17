@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 const images = await Astro.glob('/src/assets/partners/*.{jpeg,jpg,png,gif,webp,svg}');
 ---
 
-<ul class="flex gap-8 flex-wrap justify-center">
+<ul class="flex flex-wrap gap-8 overflow-y-auto justify-center snap-x snap-mandatory">
   { images.map((img) => {
       return(
-        <li>
+        <li class="flex justify-center items-center snap-center">
           <Image src={img.default} alt="partner logo" />
         </li>
       )

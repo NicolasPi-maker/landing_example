@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "title": "Contact",
+      "data": [
+        {
+          "label": "Work inquires",
+          "value": "work@waultflow.com",
+          "type": "email",
+          "concat": true
+        },
+        {
+            "label": "Pr and speaking",
+            "value": "press@waultflow.com",
+            "type": "email",
+            "concat":  true
+        },
+        {
+            "label": "New business",
+            "value": "newbusiness@vaultflow.com",
+            "type": "email",
+            "concat":  true
+        }
+      ]
+    },
+    {
+      "title": "Carreers",
+        "data": [
+          {
+            "label": "Careers@vaultflow.com",
+            "value": "Careers@vaultflow.com",
+            "type": "email"
+          }
+        ]
+    },
+    {
+      "title": "Address",
+        "data": [
+          {
+            "label": null,
+            "value": "398 11th Street, Floor 2\nSan Francisco, CA 94103"
+          }
+        ]
+    },
+    {
+      "title": "Social",
+        "data": [
+          {
+            "label": "Twitter",
+            "value": "https://www.instagram.com/vaultflow/",
+            "type": "url"
+
+          },
+          {
+            "label": "Instagram",
+            "value": "https://twitter.com/vaultflow",
+            "type": "url"
+          },
+          {
+            "label": "Facebook",
+            "value": "https://www.facebook.com/vaultflow",
+            "type": "url"
+          }
+        ]
+    }
+  ]
+}

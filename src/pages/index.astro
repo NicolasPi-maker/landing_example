@@ -7,6 +7,15 @@ import TrustedList from "../components/partners/TrustedList.astro";
 
 import fetchApi from '../lib/strapi';
 import type Landing from '../interfaces/landing';
+import HeadingMain from "../components/main/HeadingMain.astro";
+import ContentCard from "../components/main/ContentCard.astro";
+
+import AnalyticsIcon from '../assets/icon/analytics.png';
+import TokenIcon from '../assets/icon/token.png';
+import ImgCard from '../assets/img/imgCard.png';
+import CardWrapper from "../components/main/CardWrapper.astro";
+import BtnLink from "../components/shared/BtnLink.astro";
+import TheFooter from "../components/footer/TheFooter.astro";
 
 const landing = await fetchApi<Landing>({
     endpoint: 'landing?populate=*', // le type de contenu à récupérer
@@ -20,13 +29,51 @@ const landing = await fetchApi<Landing>({
         <section class="flex justify-center p-4 m-auto md:w-2/3 lg:w-3/4">
             <CtaContent title={landing.title} description={landing.description} mainImg={landing.main_img.url} btnText={landing.button_text} />
         </section>
-        <section class="flex flex-col gap-8">
-            <p class="text-center text-white text-sm md:text-base opacity-80">Trusted by teams at over <span class="font-bold">1,000</span> of the world’s leading organizations</p>
+        <section class="flex flex-col gap-8 my-8">
+            <p class="text-center text-white md:text-base opacity-80">Trusted by teams at over <span class="font-bold">1,000</span> of the world’s leading organizations</p>
             <TrustedList />
         </section>
     </header>
     <main>
+        <section>
+            <HeadingMain />
+        </section>
+        <section class="md:w-3/4 xl:w-2/3 m-auto flex flex-col gap-24 p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <ContentCard
+                  title="Analytics DashBoard"
+                  logo={AnalyticsIcon}
+                  description="Our Analytics Dashboard provides a clear and intuitive interface for you to easily analyze your data. From customizable graphs to real-time data updates, our dashboard offers everything you need to gain valuable insights."
+                  link={{url: "#", title: "View dashboard"}}
+                  auraColor="#5b22db"
+                />
+                <ContentCard
+                  title="Analytics DashBoard"
+                  logo={TokenIcon}
+                  description="Our Analytics Dashboard provides a clear and intuitive interface for you to easily analyze your data. From customizable graphs to real-time data updates, our dashboard offers everything you need to gain valuable insights."
+                  link={{url: "#", title: "View dashboard"}}
+                  auraColor="#9c31ce"
+                />
+            </div>
+            <ContentCard
+              title="Analytics DashBoard"
+              logo={AnalyticsIcon}
+              description="Our Analytics Dashboard provides a clear and intuitive interface for you to easily analyze your data. From customizable graphs to real-time data updates, our dashboard offers everything you need to gain valuable insights."
+              link={{url: "#", title: "View dashboard"}}
+              img={ImgCard}
+            />
+            <CardWrapper>
+                <div class="flex flex-col gap-8 m-auto md:w-2/3 text-center">
+                    <h2 class="text-2xl md:text-4xl font-bold"> Our powerful analytics provides invaluable insights.</h2>
+                    <p class="opacity-65 line-clamp-4 md:line-clamp-none">Unlock the power of data with our cutting-edge analytics product. Get instant insights with our user-friendly Analytics Dashboard, and take advantage of our innovative digital credit tokens to reward your customers and incentivize engagement. </p>
+                    <BtnLink url="#" label="Download the app" outlined={true} customClass="w-max m-auto" />
+                </div>
+            </CardWrapper>
+        </section>
     </main>
+    <footer class="m-auto w-2/3 my-16">
+        <TheFooter />
+    </footer>
 </Layout>
 
 <style>
