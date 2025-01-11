@@ -1,5 +1,8 @@
 ---
+
+import {Image} from "astro:assets";
 import BtnLink from "../shared/BtnLink.astro";
+import Logo from '../../assets/logo/logo.png';
 
 const { logo, companyName } = Astro.props;
 const baseApiUrl = import.meta.env.STRAPI_URL;
@@ -7,7 +10,7 @@ const baseApiUrl = import.meta.env.STRAPI_URL;
 <nav class="flex flex-col relative flex-auto md:hidden">
     <div class="p-4 glass flex z-50">
         <div class="flex gap-2 items-center flex-1">
-            <img src=`${baseApiUrl}/${logo}` alt="Astro logo" />
+            <Image src={Logo} alt="Astro logo" />
             <h2 class="font-bold text-xl">{companyName}</h2>
         </div>
         <button id="burger-btn" class="relative md:hidden">

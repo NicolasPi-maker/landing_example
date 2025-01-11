@@ -24,12 +24,12 @@ const landing = await fetchApi<Landing>({
 ---
 <Layout title="Welcome to Astro.">
     <header class="min-h-dvh flex flex-col gap-8 md:gap-16">
-        <MobileNavBar companyName={landing.company_name} logo={landing.logo.url} />
-        <DesktopNavBar  companyName={landing.company_name} logo={landing.logo.url}/>
+        <MobileNavBar companyName={landing.company_name ?? "VaultFlow"} logo={landing.logo.url ?? null} />
+        <DesktopNavBar  companyName={landing.company_name} logo={landing.logo.url ?? null}/>
         <section class="flex justify-center p-4 m-auto md:w-2/3 lg:w-3/4">
             <CtaContent title={landing.title} description={landing.description} mainImg={landing.main_img.url} btnText={landing.button_text} />
         </section>
-        <section class="flex flex-col gap-8 my-8">
+        <section class="flex flex-col my-8">
             <p class="text-center text-white md:text-base opacity-80">Trusted by teams at over <span class="font-bold">1,000</span> of the world’s leading organizations</p>
             <TrustedList />
         </section>
