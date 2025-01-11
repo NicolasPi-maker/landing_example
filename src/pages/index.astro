@@ -17,10 +17,23 @@ import CardWrapper from "../components/main/CardWrapper.astro";
 import BtnLink from "../components/shared/BtnLink.astro";
 import TheFooter from "../components/footer/TheFooter.astro";
 
+type landingType = {
+    company_name: string;
+    logo: {
+        url: string;
+    };
+    title: string;
+    description: string;
+    main_img: {
+        url: string;
+    };
+    button_text: string;
+};
+
 const landing = await fetchApi<Landing>({
     endpoint: 'landing?populate=*', // le type de contenu à récupérer
     wrappedByKey: 'data', // la clé pour décapsuler la réponse
-});
+}) as landingType;
 ---
 <Layout title="Welcome to Astro.">
     <header class="min-h-dvh flex flex-col gap-8 md:gap-16">

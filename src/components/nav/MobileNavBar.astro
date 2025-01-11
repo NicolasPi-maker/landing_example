@@ -62,12 +62,12 @@ const baseApiUrl = import.meta.env.STRAPI_URL;
   }
 </style>
 
-<script>
+<script lang="ts">
   window.onload = () => {
-    const burgerBtn = document.querySelector('#burger-btn');
-    const navMobile = document.querySelector('#nav-mobile');
-    const openedSvg = document.querySelector('#opened-svg');
-    const closedSvg = document.querySelector('#closed-svg');
+    const burgerBtn = document.querySelector('#burger-btn') as HTMLButtonElement;
+    const navMobile = document.querySelector('#nav-mobile') as HTMLUListElement;
+    const openedSvg = document.querySelector('#opened-svg') as SVGElement;
+    const closedSvg = document.querySelector('#closed-svg') as SVGElement;
 
     burgerBtn.addEventListener('click', () => {
       navMobile.classList.toggle('open');
