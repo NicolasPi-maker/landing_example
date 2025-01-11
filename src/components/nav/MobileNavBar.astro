@@ -4,8 +4,7 @@ import {Image} from "astro:assets";
 import BtnLink from "../shared/BtnLink.astro";
 import Logo from '../../assets/logo/logo.png';
 
-const { logo, companyName } = Astro.props;
-const baseApiUrl = import.meta.env.STRAPI_URL;
+const companyName = "Vaultflow";
 ---
 <nav class="flex flex-col relative flex-auto md:hidden">
     <div class="p-4 glass flex z-50">
@@ -62,39 +61,4 @@ const baseApiUrl = import.meta.env.STRAPI_URL;
   }
 </style>
 
-<script lang="ts">
-  window.onload = () => {
-    const burgerBtn = document.querySelector('#burger-btn') as HTMLButtonElement;
-    const navMobile = document.querySelector('#nav-mobile') as HTMLUListElement;
-    const openedSvg = document.querySelector('#opened-svg') as SVGElement;
-    const closedSvg = document.querySelector('#closed-svg') as SVGElement;
-
-    burgerBtn.addEventListener('click', () => {
-      navMobile.classList.toggle('open');
-      toggleSvg();
-    });
-
-
-    const toggleSvg = () => {
-      if(navMobile.classList.contains('open')) {
-        // switch svg to times icon when nav is open
-        openedSvg.style.opacity = '1';
-        closedSvg.style.opacity = '0';
-
-        // prevent scrolling when nav is open
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${window.scrollY}px`;
-      } else {
-        // switch svg to burger icon when nav is closed
-        openedSvg.style.opacity = '0';
-        closedSvg.style.opacity = '1';
-
-        // allow scrolling when nav is closed and reset scroll position
-          const scrollY = document.body.style.top;
-          document.body.style.position = '';
-          document.body.style.top = '';
-          window.scrollTo(0, parseInt(scrollY || '0') * -1)
-      }
-    }
-  }
-</script>
+<script src="../../static/js/burgerMenuNavigation.js"></script>

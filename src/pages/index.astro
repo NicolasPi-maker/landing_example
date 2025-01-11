@@ -5,8 +5,8 @@ import MobileNavBar from "../components/nav/MobileNavBar.astro";
 import CtaContent from "../components/cta/CtaContent.astro";
 import TrustedList from "../components/partners/TrustedList.astro";
 
-import fetchApi from '../lib/strapi';
-import type Landing from '../interfaces/landing';
+// import fetchApi from '../lib/strapi';
+// import type Landing from '../interfaces/landing';
 import HeadingMain from "../components/main/HeadingMain.astro";
 import ContentCard from "../components/main/ContentCard.astro";
 
@@ -17,30 +17,17 @@ import CardWrapper from "../components/main/CardWrapper.astro";
 import BtnLink from "../components/shared/BtnLink.astro";
 import TheFooter from "../components/footer/TheFooter.astro";
 
-type landingType = {
-    company_name: string;
-    logo: {
-        url: string;
-    };
-    title: string;
-    description: string;
-    main_img: {
-        url: string;
-    };
-    button_text: string;
-};
-
-const landing = await fetchApi<Landing>({
-    endpoint: 'landing?populate=*', // le type de contenu à récupérer
-    wrappedByKey: 'data', // la clé pour décapsuler la réponse
-}) as landingType;
+// const landing = await fetchApi<Landing>({
+//     endpoint: 'landing?populate=*', // le type de contenu à récupérer
+//     wrappedByKey: 'data', // la clé pour décapsuler la réponse
+// });
 ---
-<Layout title="Welcome to Astro.">
+<Layout title="Vaultflow">
     <header class="min-h-dvh flex flex-col gap-8 md:gap-16">
-        <MobileNavBar companyName={landing.company_name ?? "VaultFlow"} logo={landing.logo.url ?? null} />
-        <DesktopNavBar  companyName={landing.company_name} logo={landing.logo.url ?? null}/>
+        <MobileNavBar />
+        <DesktopNavBar  />
         <section class="flex justify-center p-4 m-auto md:w-2/3 lg:w-3/4">
-            <CtaContent title={landing.title} description={landing.description} mainImg={landing.main_img.url} btnText={landing.button_text} />
+            <CtaContent />
         </section>
         <section class="flex flex-col my-8">
             <p class="text-center text-white md:text-base opacity-80">Trusted by teams at over <span class="font-bold">1,000</span> of the world’s leading organizations</p>
